@@ -1,4 +1,6 @@
 ---
+import Footer from '../components/Footer.astro';
+
 interface Props {
   title: string;
   description?: string;
@@ -51,7 +53,14 @@ const {
     <title>{title}</title>
   </head>
   <body>
-    <slot />
+    <div class="min-h-dvh flex flex-col">
+      <main
+        class="flex-1 w-screen overflow-hidden flex flex-col items-center justify-center"
+      >
+        <slot />
+      </main>
+      <Footer />
+    </div>
   </body>
 </html>
 <style is:global>
