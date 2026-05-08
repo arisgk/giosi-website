@@ -1,0 +1,28 @@
+---
+import { Image } from 'astro:assets';
+
+import Layout from '../layouts/Layout.astro';
+import FullViewportContainer from '../components/FullViewportContainer.astro';
+import logo from '../assets/images/giosi-logo.svg';
+import underConstruction from '../assets/images/under-construction.svg';
+---
+
+<Layout title="Γήωση">
+  <FullViewportContainer>
+    <div
+      class="flex flex-col items-center gap-y-8 sm:gap-y-12 px-6 py-8 max-h-full"
+    >
+      <Image src={logo} alt="Γήωση" class="h-20 sm:h-28 w-auto shrink-0" />
+      <Image
+        src={underConstruction}
+        alt="Under construction"
+        class="min-h-0 max-h-[50vh] w-auto max-w-full object-contain"
+      />
+      <p
+        class="shrink-0 text-2xl sm:text-3xl md:text-4xl tracking-wide text-center sm:text-right m-0 font-light max-w-[630px] text-black/85"
+      >
+        Coming Soon
+      </p>
+    </div>
+  </FullViewportContainer>
+</Layout>

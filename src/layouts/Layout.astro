@@ -1,0 +1,91 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = 'Giosi',
+  description = 'Energy community in Thessaloniki, Greece',
+  image = 'https://giosi.gr/giosi-1200x630.png',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <!-- SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+
+    <!-- Twitter -->
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+<style is:global>
+  @import 'tailwindcss';
+
+  @theme {
+    --font-sans: 'Noto Sans', sans-serif;
+    --font-serif: 'Spectral', serif;
+    --font-mono: 'Fira Code', monospace;
+
+    --color-green-50: #edfff5;
+    --color-green-100: #d6ffea;
+    --color-green-200: #afffd5;
+    --color-green-300: #71ffb6;
+    --color-green-400: #2dfb90;
+    --color-green-500: #02e570;
+    --color-green-600: #00bf59;
+    --color-green-700: #00a651;
+    --color-green-800: #06753d;
+    --color-green-900: #085f34;
+    --color-green-950: #00361b;
+  }
+
+  @custom-variant dark (&:where(.dark, .dark *));
+
+  html {
+    font-family: 'Noto Sans', sans-serif;
+    font-optical-sizing: auto;
+  }
+  body {
+    margin: 0;
+    background-color: #f6f5f1;
+  }
+  :not(pre) > code {
+    @apply px-1.5 py-0.5 rounded-md bg-black/5 dark:bg-white/5 font-mono text-sm border border-black/10 dark:border-white/10;
+  }
+</style>
